@@ -1,6 +1,7 @@
 import app from './app';
-const port = 3001;
 
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}.`);
+app.set('port', process.env.PORT || 3001);
+
+app.listen(app.get('port'), () => {
+  console.log(`Server listening on port ${app.get('port')}.`);
 });
