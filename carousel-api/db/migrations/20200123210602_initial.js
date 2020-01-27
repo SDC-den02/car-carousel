@@ -1,4 +1,4 @@
-exports.up = function(knex, Promise) {
+exports.up = function(knex) {
   return Promise.all([
     knex.schema.createTable('cars', function (table) {
       table.increments('id').primary();
@@ -10,22 +10,16 @@ exports.up = function(knex, Promise) {
     }),
     knex.schema.createTable('images', function (table) {
       table.increments('id').primary();
-      table.string('image_1');
-      table.string('image_2');
-      table.string('image_3');
-      table.string('image_4');
-      table.string('image_5');
-      table.string('image_6');
+      table.string('image');
       table.integer('car_id').unsigned();
-      table.foreign('cars_id')
+      table.foreign('car_id')
         .references('cars.id');
-
       table.timestamps(true, true);
     })
   ]);
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function(knex) {
   return Promise.all([
     knex.schema.dropTable('cars'),
     knex.schema.dropTable('images'),
