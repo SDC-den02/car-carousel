@@ -32,6 +32,16 @@ app.get('/cars/:id', async (req, res) => {
       }
     })
     .catch(err => res.status(500).json({ err }));
-})
+});
+
+// Get all images
+app.get('/images', async (req, res) => {
+  try {
+    const images = await database('images').select();
+    res.status(200).json(images);
+  } catch (err) {
+    res.status(500).json({ err });
+  }
+});
 
 export default app;
