@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Carousel = () => {
   return (
-    <div>
+    <div className='carousel'>
 
     </div>
   )
