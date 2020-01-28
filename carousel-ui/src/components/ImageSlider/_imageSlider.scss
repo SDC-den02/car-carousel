@@ -1,0 +1,10 @@
+.image-slider__container {
+  display: flex;
+  overflow-x: scroll;
+  padding: 0 .5em;
+}
+
+.slider-images {
+  width: 25%;
+  padding: 0 3%;
+}

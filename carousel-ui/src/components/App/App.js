@@ -21,7 +21,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className='app-container'>
       <h1>Car Carousel</h1>
       <Switch>
         <Route exact path='/cars/:id' render={({ match }) => {
