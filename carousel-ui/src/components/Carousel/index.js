@@ -1,6 +1,7 @@
 import React from 'react';
 
-export const Carousel = () => {
+export const Carousel = (props) => {
+  console.log(props);
   return (
     <div className='carousel'>
 
