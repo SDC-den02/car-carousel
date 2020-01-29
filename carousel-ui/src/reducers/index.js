@@ -2,9 +2,11 @@ import { combineReducers } from 'redux';
 import { loading } from './loading';
 import { error } from './error';
 import { cars } from './cars';
+import { carousel } from './carousel';
 
 export const rootReducer = combineReducers({
   loading,
   error,
-  cars
+  cars,
+  carousel
 });

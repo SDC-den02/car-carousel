@@ -19,6 +19,15 @@
   z-index: 2;
 }
 
+.hidden {
+  visibility: hidden;
+  cursor: none;
+}
+
+.visible {
+  visibility: visible;
+}
+
 .main-display__wrapper {
   position: relative;
 }

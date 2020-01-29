@@ -1,17 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { ImageSlider } from '../ImageSlider';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import { carousel } from '../../reducers/carousel';
 
 export const Carousel = ({ images }) => {
 
-  // id, make, model, year,
-  console.log(images);
-  const [current, setCurrent] = useState(0);
-  console.log(images[current]);
+  const initialState = {images, current: 0}
+  const [state, dispatch] = useReducer(carousel, initialState);
+  const { current } = state;
+
+  const handleNext = () => {
+    dispatch({ type: 'NEXT_IMAGE' });
+  }
+
+  const handlePrevious = () => {
+    dispatch({ type: 'PREVIOUS_IMAGE' });
+  }
 
   useEffect(() => {
-    const next = (current + 1) % images.length;
   }, [current]);
 
   return (
@@ -21,10 +28,18 @@ export const Carousel = ({ images }) => {
           <img src={images[current].image} className='current-img__display' />
         </div>
         <div className='arrow-container previous-arrow'>
-          <ArrowLeftIcon fontSize='large' className='icon-styles' />
+          <ArrowLeftIcon
+            fontSize='large'
+            className={'icon-styles ' + (current === 0 ? 'hidden' : 'visible')}
+            onClick={handlePrevious}
+          />
         </div>
         <div className='arrow-container next-arrow'>
-          <ArrowRightIcon fontSize='large' className='icon-styles' />
+          <ArrowRightIcon
+            fontSize='large'
+            className={'icon-styles ' + (current === images.length - 1 ? 'hidden' : 'visible')}
+            onClick={handleNext}
+          />
         </div>
       </div>
       <div className='image-slider'>
