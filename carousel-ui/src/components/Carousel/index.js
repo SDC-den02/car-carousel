@@ -25,7 +25,7 @@ export const Carousel = ({ images }) => {
     <div className='carousel-container'>
       <div className='main-carousel'>
         <div className='main-diplay__wrapper'>
-          <img src={images[current].image} className='current-img__display' />
+          <img src={images[current].image} className='current-img__display' alt={images[current].id} />
         </div>
         <div className='arrow-container previous-arrow'>
           <ArrowLeftIcon
@@ -42,9 +42,9 @@ export const Carousel = ({ images }) => {
           />
         </div>
       </div>
-      <div className='image-slider'>
+      {/* <div className='image-slider'> */}
         <ImageSlider images={images} />
-      </div>
+      {/* </div> */}
     </div>
   );
 }

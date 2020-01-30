@@ -32,3 +32,18 @@ export const currentImage = image => ({
   type: 'CURRENT_IMAGE',
   image
 });
+
+export const splitImages = images => ({
+  type: 'SPLIT_IMAGES',
+  images
+});
+
+export const nextSlide = slide => ({
+  type: 'NEXT_SLIDE',
+  slide
+});
+
+export const previousSlide = slide => ({
+  type: 'PREVIOUS_SLIDE',
+  slide
+});
