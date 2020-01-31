@@ -1,6 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
 import { imageSlider } from '../../reducers/imageSlider';
-// import { Slides } from './Slide';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
@@ -12,7 +11,6 @@ export const ImageSlider = ({ images, handleClick }) => {
 
   useEffect(() => {
     dispatch({ type: 'SPLIT_IMAGES' });
-    console.log(state);
   }, [current]);
 
   if (splitImages) {
