@@ -3,14 +3,11 @@
   justify-content: center;
   display: flex;
   height: 102px;
-  // overflow-x: scroll;
-  // padding: 0 .5em;
   position: relative;
   width: inherit;
 }
 
 .slider-images {
-  // width: 100%;
   height: 100%;
   padding: 0 .2%;
 }
@@ -22,9 +19,7 @@
   text-decoration: none;
 }
 
-// .slide {
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   background-position: 50% 60%;
-//   height: 106px;
-// }
+.disabled-btn {
+  color: #e4e4e4;
+  cursor: auto;
+}

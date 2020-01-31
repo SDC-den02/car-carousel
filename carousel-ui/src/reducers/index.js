@@ -9,5 +9,6 @@ export const rootReducer = combineReducers({
   loading,
   error,
   cars,
-  carousel
+  carousel,
+  imageSlider
 });
