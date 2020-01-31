@@ -18,8 +18,6 @@ export const ImageSlider = ({ images }) => {
   if (splitImages) {
     displayImages = splitImages[current].map(image => <img src={image.image} key={image.id} className='slider-images' alt='' />)
   }
-console.log(state);
-  let [currentIdx, setCurrentIdx] = useState(0);
 
   const handlePreviousSlide = () => {
     dispatch({ type: 'PREVIOUS_SLIDE' });
@@ -30,14 +28,16 @@ console.log(state);
   }
 
   return (
+    splitImages ?
     <div className='image-slider__container'>
       <div className='arrow-container'>
-        <ArrowLeftIcon className='slider-icon' fontSize='large' onClick={handlePreviousSlide}/>
+        <ArrowLeftIcon className={'slider-icon ' + (current === 0 ? 'disabled-btn' : 'active')} fontSize='large' onClick={handlePreviousSlide}/>
       </div>
       {displayImages}
       <div className='arrow-container'>
-        <ArrowRightIcon className='slider-icon' fontSize='large' onClick={handleNextSlide} />
+        <ArrowRightIcon className={'slider-icon ' + (current === splitImages.length - 1 ? 'disabled-btn' : 'active')} fontSize='large' onClick={handleNextSlide} />
       </div>
-    </div>
+    </div> :
+    <div><h1>Loading...</h1></div>
   )
 }
