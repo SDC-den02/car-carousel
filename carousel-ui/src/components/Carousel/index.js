@@ -18,6 +18,10 @@ export const Carousel = ({ images }) => {
     dispatch({ type: 'PREVIOUS_IMAGE' });
   }
 
+  const handleChangeMain = index => {
+    dispatch({ type: 'CURRENT_IMAGE', payload: index });
+  }
+
   useEffect(() => {
   }, [current]);
 
@@ -42,9 +46,7 @@ export const Carousel = ({ images }) => {
           />
         </div>
       </div>
-      {/* <div className='image-slider'> */}
-        <ImageSlider images={images} />
-      {/* </div> */}
+      <ImageSlider images={images} handleClick={handleChangeMain} />
     </div>
   );
 }

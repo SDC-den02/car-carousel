@@ -5,9 +5,13 @@ export const imageSlider = (state = {}, action) => {
       const { images } = state;
       let index = 0;
       let splitImages = [];
+      // console.log('images in reducer: ', images);
+      let newImages = images.map((image, i) => {
+        return { ...image, arrIdx: i };
+      })
       while (index < length) {
         if (index % 5 === 0) splitImages.push([]);
-        splitImages[splitImages.length - 1].push(images[index++]);
+        splitImages[splitImages.length - 1].push(newImages[index++]);
       }
       return { ...state, splitImages: splitImages };
     case 'NEXT_SLIDE':
@@ -19,7 +23,7 @@ export const imageSlider = (state = {}, action) => {
       if (state.current < state.splitImages.length && state.current > 0) {
         return { ...state, previous: state.current-- };
       }
-      return {...state, previous: state.current}
+      return { ...state, previous: state.current }
     default:
       return state;
     }

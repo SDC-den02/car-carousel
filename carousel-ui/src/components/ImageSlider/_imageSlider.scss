@@ -9,7 +9,13 @@
 
 .slider-images {
   height: 100%;
-  padding: 0 .2%;
+  // padding: 0 .2%;
+  margin: 0 .1%;
+
+  &:hover {
+    outline: #62A60A solid 1px;
+    cursor: pointer;
+  }
 }
 
 .slider-icon {
