@@ -16,8 +16,7 @@ export const ImageSlider = ({ images, handleClick }) => {
   }, [current]);
 
   if (splitImages) {
-    displayImages = splitImages[current].map((image, i) => <img src={image.image} key={image.id} className='slider-images' alt='' onClick={() => handleClick(image.arrIdx)} />)
-    console.log(splitImages)
+    displayImages = splitImages[current].map(image => <img src={image.image} key={image.id} className='slider-images' alt='' onClick={() => handleClick(image.arrIdx)} />)
   }
 
   const handlePreviousSlide = () => {

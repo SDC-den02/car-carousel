@@ -6,8 +6,9 @@ import { Carousel } from '../Carousel';
 import { PageNotFound } from '../PageNotFound';
 
 const App = () => {
-  const { cars } = useSelector(state => ({
-    cars: state.cars
+  const { cars, loading } = useSelector(state => ({
+    cars: state.cars,
+    loading: state.loading
   }));
 
   const dispatch = useDispatch();
@@ -23,12 +24,17 @@ const App = () => {
   return (
     <div className='app-container'>
       <h1>Car Carousel</h1>
+      {!loading ?
       <Switch>
         <Route exact path='/cars/:id' render={({ match }) => {
-          const car = findCar(parseInt(match.params.id));
+          const { id } = match.params;
+          const car = findCar(parseInt(id));
           return car ? <Carousel {...car} /> : <PageNotFound />;
         }} />
-      </Switch>
+      </Switch> :
+      <h1>Loading...</h1>
+
+    }
     </div>
   );
 }
