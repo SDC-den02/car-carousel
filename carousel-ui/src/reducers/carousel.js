@@ -15,7 +15,7 @@ export const carousel = (state = {}, action) => {
         return { ...state, previous: state.current };
       }
     case 'CURRENT_IMAGE':
-      return { ...state, current: state.current };
+      return { ...state, current: action.payload };
     default:
       return state;
   }

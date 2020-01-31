@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { imageSlider } from '../../reducers/imageSlider';
 // import { Slides } from './Slide';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
-export const ImageSlider = ({ images }) => {
+export const ImageSlider = ({ images, handleClick }) => {
   const initialState = { images, current: 0 };
   const [state, dispatch] = useReducer(imageSlider, initialState);
   const { current, splitImages } = state;
@@ -16,7 +16,8 @@ export const ImageSlider = ({ images }) => {
   }, [current]);
 
   if (splitImages) {
-    displayImages = splitImages[current].map(image => <img src={image.image} key={image.id} className='slider-images' alt='' />)
+    displayImages = splitImages[current].map((image, i) => <img src={image.image} key={image.id} className='slider-images' alt='' onClick={() => handleClick(image.arrIdx)} />)
+    console.log(splitImages)
   }
 
   const handlePreviousSlide = () => {
