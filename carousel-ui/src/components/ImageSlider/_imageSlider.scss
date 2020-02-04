@@ -4,12 +4,12 @@
   display: flex;
   height: 102px;
   position: relative;
-  width: inherit;
+  // width: inherit;
+  // width: 50%;
 }
 
 .slider-images {
   height: 100%;
-  // padding: 0 .2%;
   margin: 0 .1%;
 
   &:hover {
