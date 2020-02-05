@@ -1,12 +1,5 @@
-.main-carousel {
-  position: relative;
-  margin: 0 auto;
-  white-space: nowrap;
-  width: 650px;
-}
-
 .icon-styles {
-  background-color: #b6ada9;
+  background-color: #B6ADA9;
   border-radius: 50%;
   color: #FFF;
   cursor: pointer;
@@ -17,6 +10,11 @@
   top: 45%;
   transform: scale(1.3);
   z-index: 2;
+
+  &:hover {
+    background-color: #A3A19F;
+    opacity: 1;
+  }
 }
 
 .hidden {
@@ -43,7 +41,7 @@
 }
 
 .previous-arrow {
-  top: 50%;
+  top: 40%;
   left: 25px;
   z-index: 2;
   position: absolute;
@@ -51,7 +49,7 @@
 
 .next-arrow {
   position: absolute;
-  top: 50%;
+  top: 40%;
   right: 25px;
   z-index: 1;
 }

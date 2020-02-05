@@ -23,7 +23,6 @@ const App = () => {
 
   return (
     <div className='app-container'>
-      <h1>Car Carousel</h1>
       {!loading ?
       <Switch>
         <Route exact path='/cars/:id' render={({ match }) => {
@@ -33,7 +32,6 @@ const App = () => {
         }} />
       </Switch> :
       <h1>Loading...</h1>
-
     }
     </div>
   );
