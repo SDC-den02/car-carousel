@@ -13,6 +13,7 @@ app.use(cors());
 app.get('/cars', async (req, res) => {
   try {
     const cars = await database('cars').select();
+    if (!cars.length) return res.status(404).json('Cars Not Found');
     res.status(200).json(cars);
   } catch (err) {
     res.status(500).json({ err });

@@ -1,30 +1,41 @@
 module.exports = {
   development: {
-    client: 'pg',
-    connection: 'postgres://localhost/carsdb',
+    client: "pg",
+    connection: "postgres://localhost/carsdb",
     migrations: {
-      directory: './db/migrations'
+      directory: "./db/migrations"
     },
     seeds: {
-      directory: './db/seeds/dev'
+      directory: "./db/seeds/dev"
     },
     useNullAsDefault: true
   },
 
   production: {
-    client: 'postgresql',
+    client: "postgresql",
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: "my_db",
+      user: "username",
+      password: "password"
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: "knex_migrations"
     }
-  }
+  },
 
+  test: {
+    client: "pg",
+    connection: "postgres://localhost/carsdb",
+    migrations: {
+      directory: "./db/migrations"
+    },
+    seeds: {
+      directory: "./db/seeds/dev"
+    },
+    useNullAsDefault: true
+  }
 };
