@@ -35,7 +35,16 @@ describe('api', () => {
       const res = await request(app).get(`/cars/${car_id}`);
       const result = res.body[0];
       expect(res.status).toBe(200);
-      expect(result).toEqual(expectedCar);
+      expect(result.image).toEqual(expectedCar.image);
+      expect(result.car_id).toEqual(expectedCar.car_id);
     });
+
+    it('should return a status of 404 if car is not in db', async () => {
+      const id = -1;
+      const res = await request(app).get(`/cars/${id}`);
+      const status = res.status;
+      expect(status).toBe(404);
+    })
+
   });
 });
