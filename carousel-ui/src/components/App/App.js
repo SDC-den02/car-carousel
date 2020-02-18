@@ -13,7 +13,9 @@ const App = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
+    // eslint-disable-next-line
     dispatch(getAllCars());
+    // eslint-disable-next-line
   }, []);
 
   const findCar = id => {

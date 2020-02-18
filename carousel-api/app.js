@@ -18,6 +18,15 @@ app.get('/cars', async (req, res) => {
     res.status(500).json({ err });
   }
 });
+app.post('/cars', async (req, res) => {
+  const input = req.body;
+  try {
+    const cars = await database('cars').insert(input);
+    res.status(200).json(cars);
+  } catch (err) {
+    res.status(500).json({ err });
+  }
+});
 
 // Get all images for specific car
 app.get('/cars/:id', async (req, res) => {
@@ -42,6 +51,22 @@ app.get('/images', async (req, res) => {
   } catch (err) {
     res.status(500).json({ err });
   }
+});
+
+app.put('/cars/:id', async (req, res) => {
+  const id = parseInt(req.params.id);
+  database('cars')
+    .where('car_id', id)
+    .update(req.body)
+    .catch(err => res.status(500).json({ err }));
+});
+
+app.delete('/cars/:id', async (req, res) => {
+  const id = parseInt(req.params.id);
+  database('images')
+    .where('car_id', id)
+    .del()
+    .catch(err => res.status(500).json({ err }));
 });
 
 export default app;
