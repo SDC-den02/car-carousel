@@ -1,6 +1,8 @@
-const mariadb = require('mariadb');
+require('newrelic');
+const mariadb = require('mariadb/callback');
+
 require('dotenv').config();
-const express = require('express');
+const express = require('express'); 
 const cors = require('cors');
 const faker = require('faker');
 const fs = require('fs');
@@ -17,42 +19,21 @@ app.use(cors());
 //   user: 'root',
 //   database: 'venicle'
 // });
-// const arr = [['toyota', 'prius', '2009'], ['jeep', 'compass', 2018]];
-// connection.batch('INSERT INTO cars (make, model, year) VALUES (?, ?, ?)', arr);
-const createFakeVenicle = () => ([
-  faker.name.firstName(),
-  faker.name.lastName(),
-  faker.random.number({min: 1950, max: 2020 })
-]);
+const connection = mariadb
+.createConnection({
+  host: 'localhost',
+  user: 'root',
+  database: 'venicle'
+});
 
-// const seedData = async () => {
-//   connection.query('DELETE FROM cars WHERE id > 8');
-//   let maxLimit = 5000000;
-//   let venicleBatch = [];
-//   for( let i = 0; i <= maxLimit; i++){
-//     venicleBatch.push(createFakeVenicle());
-//     connection
-//       .query(`INSERT INTO cars (make, model, year) VALUES (?, ?, ?)`,venicleBatch);
-
-//       if (i % 1000 === 0){
-//         console.log('First Batch: ', i);
-//       }
-//   }
-
-//   for( let i = 0; i <= maxLimit; i++){
-//     venicleBatch.push(createFakeVenicle());
-//     connection
-//       .query(`INSERT INTO cars (make, model, year) VALUES (?, ?, ?)`,venicleBatch);
-
-//       if (i % 1000 === 0){
-//         console.log('Second Batch: ', i);
-//       }
-//   }
-// }
-// seedData();
+// const createFakeVenicle = () => ([
+//   faker.name.firstName(),
+//   faker.name.lastName(),
+//   faker.random.number({min: 1950, max: 2020 })
+// ]);
 
 app.get('/cars', (req, res) => {
-  const getQuery = 'SELECT * FROM cars LIMIT 100'
+  const getQuery = 'SELECT * FROM cars where id < 100'
   connection.query(getQuery, (err, results) => {
     if (err){
       res.status(400).send(err);
@@ -63,4 +44,5 @@ app.get('/cars', (req, res) => {
 })
 
 const PORT = process.env.PORT || 3002;
+
 app.listen(PORT, () => console.log(`server running on port: ${PORT}`));

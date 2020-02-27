@@ -4,17 +4,13 @@ const faker = require('faker');
 
 // import app from '../app';
 
-
-
 const connection = mariadb
 .createPool({
   connectionLimit: 30,
-  acquireTimeout: 50000,
+  acquireTimeout: 100000,
   host: 'localhost',
   user: 'root',
   database: 'venicle',
-  
-  
 });
 
 // const createFakeVenicle = () => ({

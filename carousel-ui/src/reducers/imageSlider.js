@@ -5,7 +5,6 @@ export const imageSlider = (state = {}, action) => {
       const { images } = state;
       let index = 0;
       let splitImages = [];
-      // console.log('images in reducer: ', images);
       let newImages = images.map((image, i) => {
         return { ...image, arrIdx: i };
       })
